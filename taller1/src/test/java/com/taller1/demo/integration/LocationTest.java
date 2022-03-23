@@ -19,10 +19,8 @@ import com.taller1.demo.services.LocationServiceImp;
 
 class LocationTest {
 
-	@Mock
 	private LocationRepository locationRepository;
 
-	@InjectMocks
 	private LocationServiceImp ls;
 
 	private Location location0;
