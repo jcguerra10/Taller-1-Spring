@@ -1,0 +1,15 @@
+package com.taller1.demo;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import com.taller1.demo.services.LocationService;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+
+class ProductInventoryTest {
+
+    @Test
+    void test() {
+
+    }
+}

@@ -1,0 +1,12 @@
+package com.taller1.demo.services;
+
+import java.util.Optional;
+
+import com.taller1.demo.model.prod.Location;
+import com.taller1.demo.model.prod.Product;
+
+public interface LocationService {
+	public Location saveLocation(Location loc);
+	public Optional<Location> getLocation(Integer locId);
+	public Location editLocation(Location loc);
+}

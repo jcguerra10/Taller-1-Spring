@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="selection" value="piService"/>
+		<item key="wrap" value="true"/>
+		<item key="casesensitive" value="false"/>
+		<item key="wholeword" value="false"/>
+		<item key="incremental" value="false"/>
+		<item key="isRegEx" value="false"/>
+		<list key="findhistory">
+			<item value="pchService"/>
+			<item value="pi"/>
+			<item value="pchRepository"/>
+			<item value="Productcosthistory"/>
+			<item value="pch1"/>
+			<item value="pch0"/>
+			<item value="location1"/>
+			<item value="location0"/>
+			<item value="ls"/>
+		</list>
+		<list key="replacehistory">
+			<item value="piService"/>
+			<item value="piRepository"/>
+			<item value="Productinventory"/>
+			<item value="pInventory1"/>
+			<item value="pInventory0"/>
+			<item value="pch1"/>
+			<item value="pch0"/>
+			<item value="ps"/>
+			<item value="product0"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="552"/>
+		<item key="DIALOG_Y_ORIGIN" value="169"/>
+		<item key="DIALOG_WIDTH" value="336"/>
+		<item key="DIALOG_HEIGHT" value="402"/>
+		<item key="DIALOG_FONT_NAME" value="1|.AppleSystemUIFont|11.0|0|COCOA|1|.AppleSystemUIFont"/>
+	</section>
+</section>

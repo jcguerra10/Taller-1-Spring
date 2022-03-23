@@ -1,0 +1,25 @@
+package com.taller1.demo.services;
+
+import com.taller1.demo.model.prod.Location;
+
+public class LocationServiceImp implements LocationService {
+
+	@Override
+	public Location saveLocation(Location loc) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Location getLocation(Integer locId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Location editLocation(Location loc) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

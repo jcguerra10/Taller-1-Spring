@@ -1,0 +1,19 @@
+package com.taller1.demo.services;
+
+import com.taller1.demo.model.prod.Product;
+
+public class ProductServiceImp implements ProductService {
+
+	@Override
+	public Product saveProduct() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Product editProduct() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

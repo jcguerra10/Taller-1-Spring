@@ -1,0 +1,19 @@
+package com.taller1.demo.services;
+
+import com.taller1.demo.model.prod.Productcosthistory;
+
+public class ProductcosthistoryServiceImp implements ProductcosthistoryService {
+
+	@Override
+	public Productcosthistory saveProductcosthistory() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Productcosthistory editProductcosthistory() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,10 @@
+package com.taller1.demo.services;
+
+import com.taller1.demo.model.prod.Location;
+import com.taller1.demo.model.prod.Product;
+
+public interface LocationService {
+	public Location saveLocation(Location loc);
+	public Location getLocation(Location loc)
+	public Location editLocation(Location loc);
+}

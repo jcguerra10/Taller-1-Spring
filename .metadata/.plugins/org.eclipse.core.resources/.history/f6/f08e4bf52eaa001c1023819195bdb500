@@ -1,0 +1,26 @@
+package com.taller1.demo.services;
+
+import com.taller1.demo.model.prod.Productcosthistory;
+import com.taller1.demo.repositories.ProductcosthistoryRepository;
+
+public class ProductcosthistoryServiceImp implements ProductcosthistoryService {
+
+	private ProductcosthistoryRepository pchRepository;
+	
+	public ProductcosthistoryServiceImp(ProductcosthistoryRepository pchRepository) {
+		this.pchRepository = pchRepository;
+	}
+
+	@Override
+	public Productcosthistory saveProductcosthistory(Productcosthistory pch) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Productcosthistory editProductcosthistory(Productcosthistory pch, Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

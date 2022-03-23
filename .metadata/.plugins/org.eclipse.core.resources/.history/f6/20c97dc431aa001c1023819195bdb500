@@ -1,0 +1,28 @@
+package com.taller1.demo.services;
+
+import com.taller1.demo.model.prod.Productinventory;
+import com.taller1.demo.repositories.ProductInventoryRepository;
+
+public class ProductInventoryServiceImp implements ProductInventoryService {
+
+	private ProductInventoryRepository proinRepository;
+	
+	
+	
+	public ProductInventoryServiceImp(ProductInventoryRepository proinRepository) {
+		this.proinRepository = proinRepository;
+	}
+
+	@Override
+	public Productinventory saveProductInventory(Productinventory proInventory) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Productinventory editProductInventory(Productinventory proInventory, Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

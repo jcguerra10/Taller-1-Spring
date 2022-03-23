@@ -1,0 +1,88 @@
+package com.taller1.demo.integration;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.when;
+
+import java.util.Optional;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+
+import com.taller1.demo.model.prod.Location;
+import com.taller1.demo.model.prod.Product;
+import com.taller1.demo.model.prod.Productinventory;
+import com.taller1.demo.repositories.LocationRepository;
+import com.taller1.demo.repositories.ProductInventoryRepository;
+import com.taller1.demo.services.ProductInventoryServiceImp;
+
+class ProductInventoryTest {
+
+	@Mock
+	private ProductInventoryRepository piRepository;
+	
+	@Mock
+	private LocationRepository locRepository;
+
+	@InjectMocks
+	private ProductInventoryServiceImp piService;
+
+	private Productinventory pInventory0;
+	private Optional<Productinventory> pInventory0op;
+	
+	private Productinventory pInventory1;
+
+
+	@BeforeEach
+	void setUp1() {
+		MockitoAnnotations.openMocks(this);
+		
+		Product proc = new Product();
+		proc.setProductid(1);
+		Location loc = new Location();
+		pInventory0 = new Productinventory();
+		pInventory0.setProduct(proc);
+		pInventory0.setLocation(loc);
+		pInventory0.setQuantity(2);
+	}
+
+	@Test
+	void testThatSaveAnProduct() {
+		when(piRepository.save(pInventory0)).thenReturn(pInventory0);
+		assertNotNull(piService.saveProductInventory(pInventory0));
+	}
+	
+	@Test
+	void testConstraints() {
+		when(piRepository.save(pInventory0)).thenReturn(pInventory0);
+		Productinventory test = piService.saveProductInventory(pInventory0);
+		assertNotNull(test.getProduct());
+		assertNotNull(test.getLocation());
+		assertTrue(test.getQuantity() > 0);
+	}
+	
+	@BeforeEach
+	void setUp2() {
+		MockitoAnnotations.openMocks(this);
+		
+		pInventory0op = Optional.of(pInventory0);
+		
+		Product proc1 = new Product();
+		proc1.setProductid(1);
+		Location loc1 = new Location();
+		pInventory1 = new Productinventory();
+		pInventory1.setProduct(proc1);
+		pInventory1.setLocation(loc1);
+		pInventory1.setQuantity(7);
+	}
+	
+	@Test
+	void testThatEditAnProduct() {
+		when(piRepository.findById(1)).thenReturn(pInventory0op);
+		when(piRepository.save(pInventory1)).thenReturn(pInventory1);
+		assertNotNull(piService.editProductInventory(pInventory1, 1));
+	}
+}

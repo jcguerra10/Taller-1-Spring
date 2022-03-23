@@ -1,0 +1,29 @@
+package com.taller1.demo.services;
+
+import java.util.Optional;
+
+import com.taller1.demo.model.prod.Productinventory;
+import com.taller1.demo.repositories.ProductInventoryRepository;
+
+public class ProductInventoryServiceImp implements ProductInventoryService {
+
+	private ProductInventoryRepository proinRepository;
+	
+	public ProductInventoryServiceImp(ProductInventoryRepository proinRepository) {
+		this.proinRepository = proinRepository;
+	}
+
+	@Override
+	public Productinventory saveProductInventory(Productinventory proInventory) {
+		return proinRepository.save(proInventory);
+	}
+
+	@Override
+	public Productinventory editProductInventory(Productinventory proInventory, Integer id) {
+		Optional<Productinventory> optional = proinRepository.findById(id);
+		Productinventory getOptional = optional.get();
+		getOptional = proInventory;
+		return proinRepository.save(getOptional);
+	}
+
+}

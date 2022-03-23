@@ -1,0 +1,26 @@
+package com.taller1.demo.services;
+
+import com.taller1.demo.model.prod.Product;
+import com.taller1.demo.repositories.ProductRepository;
+
+public class ProductServiceImp implements ProductService {
+	
+	public ProductRepository productRepository;
+	
+	public ProductServiceImp(ProductRepository productRepository) {
+		this.productRepository = productRepository;
+	}
+	
+	@Override
+	public Product saveProduct(Product pro) {
+		
+		return null;
+	}
+
+	@Override
+	public Product editProduct() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,86 @@
+package com.taller1.demo;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
+
+import java.math.BigDecimal;
+import java.sql.Timestamp;
+import java.util.Optional;
+
+import org.junit.jupiter.api.BeforeEach;
+
+import com.taller1.demo.model.prod.Product;
+import com.taller1.demo.model.prod.Productcosthistory;
+import com.taller1.demo.repositories.ProductInventoryRepository;
+import com.taller1.demo.repositories.ProductcosthistoryRepository;
+import com.taller1.demo.services.LocationService;
+import com.taller1.demo.services.ProductcosthistoryServiceImp;
+
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+
+class ProductInventoryTest {
+
+	@Mock
+	private ProductInventoryRepository pchRepository;
+
+	@InjectMocks
+	private ProductcosthistoryServiceImp pchService;
+
+	private Productcosthistory pch0;
+	private Optional<Productcosthistory> pch0op;
+	
+	private Productcosthistory pch1;
+
+
+	@BeforeEach
+	void setUp1() {
+		MockitoAnnotations.openMocks(this);
+		
+		Product proc = new Product();
+		proc.setProductid(1);
+		pch0 = new Productcosthistory();
+		pch0.setProduct(proc);
+		pch0.setEnddate(Timestamp.valueOf("2022-03-10 10:05:23"));
+		pch0.setStandardcost(BigDecimal.valueOf(25000));
+	}
+
+	@Test
+	void testThatSaveAnProduct() {
+		when(pchRepository.save(pch0)).thenReturn(pch0);
+		assertNotNull(pchService.saveProductcosthistory(pch0));
+	}
+	
+	@Test
+	void testConstraints() {
+		when(pchRepository.save(pch0)).thenReturn(pch0);
+		Productcosthistory test = pchService.saveProductcosthistory(pch0);
+		
+		assertNotNull(test.getProduct());
+		assertTrue(test.getEnddate().compareTo(new Timestamp(System.currentTimeMillis())) < 0);
+		assertTrue(test.getStandardcost().doubleValue() >= 0);
+	}
+	
+	@BeforeEach
+	void setUp2() {
+		MockitoAnnotations.openMocks(this);
+		
+		pch0op = Optional.of(pch0);
+		
+		Product proc = new Product();
+		proc.setProductid(1);
+		pch1 = new Productcosthistory();
+		pch1.setProduct(proc);
+		pch1.setEnddate(Timestamp.valueOf("2022-03-10 12:12:23"));
+		pch1.setStandardcost(BigDecimal.valueOf(23500));
+	}
+	
+	@Test
+	void testThatEditAnProduct() {
+		when(pchRepository.findById(1)).thenReturn(pch0op);
+		when(pchRepository.save(pch1)).thenReturn(pch1);
+		assertNotNull(pchService.editProductcosthistory(pch1, 1));
+	}
+}

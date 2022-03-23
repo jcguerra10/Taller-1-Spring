@@ -1,0 +1,91 @@
+package com.taller1.demo;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
+
+import java.math.BigDecimal;
+import java.sql.Timestamp;
+import java.util.Optional;
+
+import org.junit.jupiter.api.BeforeEach;
+
+import com.taller1.demo.model.prod.Location;
+import com.taller1.demo.model.prod.Product;
+import com.taller1.demo.model.prod.Productinventory;
+import com.taller1.demo.model.prod.Productinventory;
+import com.taller1.demo.repositories.ProductInventoryRepository;
+import com.taller1.demo.repositories.ProductinventoryRepository;
+import com.taller1.demo.services.LocationService;
+import com.taller1.demo.services.ProductInventoryServiceImp;
+import com.taller1.demo.services.ProductinventoryServiceImp;
+
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+
+class ProductInventoryTest {
+
+	@Mock
+	private ProductInventoryRepository piRepository;
+
+	@InjectMocks
+	private ProductInventoryServiceImp piService;
+
+	private Productinventory pInventory0;
+	private Optional<Productinventory> pInventory0op;
+	
+	private Productinventory pInventory1;
+
+
+	@BeforeEach
+	void setUp1() {
+		MockitoAnnotations.openMocks(this);
+		
+		Product proc = new Product();
+		proc.setProductid(1);
+		Location loc = new Location();
+		pInventory0 = new Productinventory();
+		pInventory0.setProduct(proc);
+		pInventory0.setLocation(loc);
+		pInventory0.setEnddate(Timestamp.valueOf("2022-03-10 10:05:23"));
+		pInventory0.setStandardcost(BigDecimal.valueOf(25000));
+	}
+
+	@Test
+	void testThatSaveAnProduct() {
+		when(piRepository.save(pInventory0)).thenReturn(pInventory0);
+		assertNotNull(piService.saveProductInventory(pInventory0));
+	}
+	
+	@Test
+	void testConstraints() {
+		when(piRepository.save(pInventory0)).thenReturn(pInventory0);
+		Productinventory test = piService.saveProductInventory(pInventory0);
+		
+		assertNotNull(test.getProduct());
+		assertTrue(test.getEnddate().compareTo(new Timestamp(System.currentTimeMillis())) < 0);
+		assertTrue(test.getStandardcost().doubleValue() >= 0);
+	}
+	
+	@BeforeEach
+	void setUp2() {
+		MockitoAnnotations.openMocks(this);
+		
+		pInventory0op = Optional.of(pInventory0);
+		
+		Product proc = new Product();
+		proc.setProductid(1);
+		pInventory1 = new Productinventory();
+		pInventory1.setProduct(proc);
+		pInventory1.setEnddate(Timestamp.valueOf("2022-03-10 12:12:23"));
+		pInventory1.setStandardcost(BigDecimal.valueOf(23500));
+	}
+	
+	@Test
+	void testThatEditAnProduct() {
+		when(piRepository.findById(1)).thenReturn(pInventory0op);
+		when(piRepository.save(pInventory1)).thenReturn(pInventory1);
+		assertNotNull(piService.editProductinventory(pInventory1, 1));
+	}
+}
