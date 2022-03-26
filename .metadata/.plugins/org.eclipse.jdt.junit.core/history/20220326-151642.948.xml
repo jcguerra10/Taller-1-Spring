@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="ProductTest" project="taller1" tests="8" started="8" failures="0" errors="0" ignored="0">
+  <testsuite name="com.taller1.demo.mock.ProductTest" time="0.338" displayname="ProductTest" uniqueid="[engine:junit-jupiter]/[class:com.taller1.demo.mock.ProductTest]">
+    <testcase name="testExceptionEdit" classname="com.taller1.demo.mock.ProductTest" time="0.317" displayname="testExceptionEdit()" uniqueid="[engine:junit-jupiter]/[class:com.taller1.demo.mock.ProductTest]/[method:testExceptionEdit()]"/>
+    <testcase name="testExceptionSize" classname="com.taller1.demo.mock.ProductTest" time="0.002" displayname="testExceptionSize()" uniqueid="[engine:junit-jupiter]/[class:com.taller1.demo.mock.ProductTest]/[method:testExceptionSize()]"/>
+    <testcase name="testExceptionWeight" classname="com.taller1.demo.mock.ProductTest" time="0.002" displayname="testExceptionWeight()" uniqueid="[engine:junit-jupiter]/[class:com.taller1.demo.mock.ProductTest]/[method:testExceptionWeight()]"/>
+    <testcase name="testExceptionEmpty" classname="com.taller1.demo.mock.ProductTest" time="0.003" displayname="testExceptionEmpty()" uniqueid="[engine:junit-jupiter]/[class:com.taller1.demo.mock.ProductTest]/[method:testExceptionEmpty()]"/>
+    <testcase name="testThatEditAnProduct" classname="com.taller1.demo.mock.ProductTest" time="0.004" displayname="testThatEditAnProduct()" uniqueid="[engine:junit-jupiter]/[class:com.taller1.demo.mock.ProductTest]/[method:testThatEditAnProduct()]"/>
+    <testcase name="testThatSaveAnProduct" classname="com.taller1.demo.mock.ProductTest" time="0.002" displayname="testThatSaveAnProduct()" uniqueid="[engine:junit-jupiter]/[class:com.taller1.demo.mock.ProductTest]/[method:testThatSaveAnProduct()]"/>
+    <testcase name="testExceptionStartAEndDate" classname="com.taller1.demo.mock.ProductTest" time="0.001" displayname="testExceptionStartAEndDate()" uniqueid="[engine:junit-jupiter]/[class:com.taller1.demo.mock.ProductTest]/[method:testExceptionStartAEndDate()]"/>
+    <testcase name="testConstraints" classname="com.taller1.demo.mock.ProductTest" time="0.002" displayname="testConstraints()" uniqueid="[engine:junit-jupiter]/[class:com.taller1.demo.mock.ProductTest]/[method:testConstraints()]"/>
+  </testsuite>
+</testrun>

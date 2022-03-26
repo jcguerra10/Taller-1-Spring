@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="ProductcosthistoryTest.testExceptionStandardcostEmpty" project="taller1" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="com.taller1.demo.mock.ProductcosthistoryTest" time="0.276" displayname="ProductcosthistoryTest" uniqueid="[engine:junit-jupiter]/[class:com.taller1.demo.mock.ProductcosthistoryTest]">
+    <testcase name="testExceptionStandardcostEmpty" classname="com.taller1.demo.mock.ProductcosthistoryTest" time="0.276" displayname="testExceptionStandardcostEmpty()" uniqueid="[engine:junit-jupiter]/[class:com.taller1.demo.mock.ProductcosthistoryTest]/[method:testExceptionStandardcostEmpty()]"/>
+  </testsuite>
+</testrun>

@@ -29,10 +29,14 @@ class LocationTest {
 
 	private Location location0;
 	private Optional<Location> location0op;
-	
+
 	private Location location2;
 
 	private Location location1;
+
+	private Location location3;
+
+	private Location location4;
 
 	// bestCases
 
@@ -46,6 +50,51 @@ class LocationTest {
 		location0.setAvailability(new BigDecimal(2));
 		location0.setCostrate(new BigDecimal(1));
 	}
+
+	@BeforeEach
+	void setUp2() {
+		MockitoAnnotations.openMocks(this);
+
+		location2 = new Location();
+		location2.setLocationid(1);
+		location2.setName("lo");
+		location2.setAvailability(new BigDecimal(11));
+		location2.setCostrate(new BigDecimal(12));
+	}
+
+	@BeforeEach
+	void setUp3() {
+		location4 = new Location();
+		location4.setLocationid(1);
+	}
+
+	@BeforeEach
+	void setUp4() {
+		MockitoAnnotations.openMocks(this);
+
+		location0op = Optional.of(location0);
+
+		location1 = new Location();
+		location1.setLocationid(1);
+		location1.setName("admin");
+		location1.setAvailability(new BigDecimal(3));
+		location1.setCostrate(new BigDecimal(1));
+	}
+
+	@BeforeEach
+	void setUp5() {
+		MockitoAnnotations.openMocks(this);
+
+		location0op = Optional.of(location0);
+
+		location3 = new Location();
+		location3.setLocationid(1);
+		location3.setName("lo");
+		location3.setAvailability(new BigDecimal(-2));
+		location3.setCostrate(new BigDecimal(-1));
+	}
+
+	// <------------------------> Save <------------------------>
 
 	@Test
 	void testThatSaveAnProduct() {
@@ -64,53 +113,49 @@ class LocationTest {
 				"ConstraintCostRate");
 	}
 
-	@BeforeEach
-	void setUp2() {
-		MockitoAnnotations.openMocks(this);
-
-		location2 = new Location();
-		location2.setLocationid(1);
-		location2.setName("lo");
-		location2.setAvailability(new BigDecimal(11));
-		location2.setCostrate(new BigDecimal(2));
-	}
+	// <------------------------> Save Throws <------------------------>
 
 	@Test
 	void testExceptionName() {
 		Assertions.assertThrows(IllegalArgumentException.class, () -> {
 			ls.saveLocation(location2);
-			location2.setName("locat");
 		});
-	}
-	
-	@Test
-	void testExceptionAvailability() {
+		
+		location2.setName("locat");
+		
 		Assertions.assertThrows(IllegalArgumentException.class, () -> {
 			ls.saveLocation(location2);
-			location2.setAvailability(new BigDecimal(-1));
 		});
-	}
-	
-	@Test
-	void testExceptionCostRate() {
+		
+		location2.setAvailability(new BigDecimal(1));
+		
 		Assertions.assertThrows(IllegalArgumentException.class, () -> {
 			ls.saveLocation(location2);
-			location2.setCostrate(new BigDecimal(2));
 		});
 	}
 
-	@BeforeEach
-	void setUp3() {
-		MockitoAnnotations.openMocks(this);
+	// <------------------------> Empty Save <------------------------>
 
-		location0op = Optional.of(location0);
+	@Test
+	void testExceptionNameEmpty() {
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			ls.saveLocation(location4);
+		});
 
-		location1 = new Location();
-		location1.setLocationid(1);
-		location1.setName("admin");
-		location1.setAvailability(new BigDecimal(3));
-		location1.setCostrate(new BigDecimal(4));
+		location4.setName("locat");
+
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			ls.saveLocation(location4);
+		});
+		
+		location4.setAvailability(new BigDecimal(2));
+		
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			ls.saveLocation(location4);
+		});
 	}
+
+	// <------------------------> Edit <------------------------>
 
 	@Test
 	void testThatEditAnProduct() {
@@ -123,4 +168,51 @@ class LocationTest {
 		assertEquals(test.getCostrate(), location1.getCostrate());
 	}
 
+	// <------------------------> Edit Throws <------------------------>
+
+	@Test
+	void testExceptionEdit() {
+		when(locationRepository.findById(1)).thenReturn(location0op);
+
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			ls.editLocation(location3, 1);
+		});
+
+		location2.setName("locat");
+
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			ls.editLocation(location3, 1);
+		});
+
+		location2.setAvailability(new BigDecimal(1));
+
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			ls.editLocation(location3, 1);
+		});
+	}
+
+	// <------------------------> Edit Empty <------------------------>
+
+	@Test
+	void testEmptyEdit() {
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			when(locationRepository.findById(1)).thenReturn(location0op);
+			ls.editLocation(location4, 1);
+		});
+
+		location4.setName("locat");
+
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			when(locationRepository.findById(1)).thenReturn(location0op);
+			ls.editLocation(location4, 1);
+		});
+
+		location4.setAvailability(new BigDecimal(1));
+
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			when(locationRepository.findById(1)).thenReturn(location0op);
+			ls.editLocation(location4, 1);
+
+		});
+	}
 }

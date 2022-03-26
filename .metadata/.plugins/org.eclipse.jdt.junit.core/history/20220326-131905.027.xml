@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="LocationTest" project="taller1" tests="7" started="7" failures="0" errors="0" ignored="0">
+  <testsuite name="com.taller1.demo.mock.LocationTest" time="0.33" displayname="LocationTest" uniqueid="[engine:junit-jupiter]/[class:com.taller1.demo.mock.LocationTest]">
+    <testcase name="testExceptionEdit" classname="com.taller1.demo.mock.LocationTest" time="0.311" displayname="testExceptionEdit()" uniqueid="[engine:junit-jupiter]/[class:com.taller1.demo.mock.LocationTest]/[method:testExceptionEdit()]"/>
+    <testcase name="testExceptionName" classname="com.taller1.demo.mock.LocationTest" time="0.003" displayname="testExceptionName()" uniqueid="[engine:junit-jupiter]/[class:com.taller1.demo.mock.LocationTest]/[method:testExceptionName()]"/>
+    <testcase name="testThatEditAnProduct" classname="com.taller1.demo.mock.LocationTest" time="0.003" displayname="testThatEditAnProduct()" uniqueid="[engine:junit-jupiter]/[class:com.taller1.demo.mock.LocationTest]/[method:testThatEditAnProduct()]"/>
+    <testcase name="testEmptyEdit" classname="com.taller1.demo.mock.LocationTest" time="0.003" displayname="testEmptyEdit()" uniqueid="[engine:junit-jupiter]/[class:com.taller1.demo.mock.LocationTest]/[method:testEmptyEdit()]"/>
+    <testcase name="testThatSaveAnProduct" classname="com.taller1.demo.mock.LocationTest" time="0.002" displayname="testThatSaveAnProduct()" uniqueid="[engine:junit-jupiter]/[class:com.taller1.demo.mock.LocationTest]/[method:testThatSaveAnProduct()]"/>
+    <testcase name="testExceptionNameEmpty" classname="com.taller1.demo.mock.LocationTest" time="0.001" displayname="testExceptionNameEmpty()" uniqueid="[engine:junit-jupiter]/[class:com.taller1.demo.mock.LocationTest]/[method:testExceptionNameEmpty()]"/>
+    <testcase name="testConstraints" classname="com.taller1.demo.mock.LocationTest" time="0.002" displayname="testConstraints()" uniqueid="[engine:junit-jupiter]/[class:com.taller1.demo.mock.LocationTest]/[method:testConstraints()]"/>
+  </testsuite>
+</testrun>

@@ -1,0 +1,33 @@
+package com.taller1.demo.services;
+
+import java.util.Optional;
+
+import com.taller1.demo.model.prod.Productcategory;
+import com.taller1.demo.model.prod.Productsubcategory;
+import com.taller1.demo.repositories.ProductsubcategoryRepository;
+
+public class ProductsubcategoryImp {
+
+private ProductsubcategoryRepository psRepository;
+	
+	public ProductsubcategoryImp(ProductsubcategoryRepository psRepository) {
+		this.psRepository = psRepository;
+	}
+
+	@Override
+	public Productcategory saveProductcategory(Productsubcategory pc) {
+		if(pc == null)
+			throw new NullPointerException("Null Object");
+		return psRepository.save(pc);
+	}
+
+	@Override
+	public Productcategory editProductcategory(Productsubcategory pc, Integer i) {
+		Optional<Productcategory> op = psRepository.findById(i);
+		ProductsubcategoryRepository opLoc = op.get();
+		if(pc == null)
+			throw new NullPointerException("Null Object");
+		opLoc.setName(pc.getName());
+		return psRepository.save(opLoc);
+	}
+}

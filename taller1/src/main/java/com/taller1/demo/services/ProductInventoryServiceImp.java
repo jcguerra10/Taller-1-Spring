@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.taller1.demo.model.prod.Productinventory;
 import com.taller1.demo.repositories.LocationRepository;
 import com.taller1.demo.repositories.ProductInventoryRepository;
+import com.taller1.demo.services.interfaces.ProductInventoryService;
 
 public class ProductInventoryServiceImp implements ProductInventoryService {
 
@@ -27,9 +28,10 @@ public class ProductInventoryServiceImp implements ProductInventoryService {
 			throw new NullPointerException();
 		if (lr.existsById(proInventory.getLocation().getLocationid()))
 			throw new NullPointerException();
+		if (proInventory.getQuantity() == null)
+			throw new IllegalArgumentException("Quantity Null");
 		if (proInventory.getQuantity() < 0)
-			throw new IllegalArgumentException();
-		
+			throw new IllegalArgumentException("Quantity is not Greater than 0");
 		return proinRepository.save(proInventory);
 	}
 
@@ -44,8 +46,10 @@ public class ProductInventoryServiceImp implements ProductInventoryService {
 			throw new NullPointerException();
 		if (lr.existsById(proInventory.getLocation().getLocationid()))
 			throw new NullPointerException();
+		if (proInventory.getQuantity() == null)
+			throw new IllegalArgumentException("Quantity Null");
 		if (proInventory.getQuantity() < 0)
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Quantity is not Greater than 0");
 		opLoc.setId(proInventory.getId());
 		opLoc.setProduct(proInventory.getProduct());
 		opLoc.setLocation(proInventory.getLocation());

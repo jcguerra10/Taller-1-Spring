@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.Optional;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -32,8 +33,12 @@ class ProductcosthistoryTest {
 	private Optional<Productcosthistory> pch0op;
 	
 	private Productcosthistory pch1;
+	private Productcosthistory pch2;
+	private Productcosthistory pch3;
+	private Productcosthistory pch4;
 
-
+	// <------------------------> Setups <------------------------>
+	
 	@BeforeEach
 	void setUp1() {
 		MockitoAnnotations.openMocks(this);
@@ -45,7 +50,53 @@ class ProductcosthistoryTest {
 		pch0.setEnddate(Timestamp.valueOf("2022-03-10 10:05:23"));
 		pch0.setStandardcost(BigDecimal.valueOf(25000));
 	}
+	
+	@BeforeEach
+	void setUp2() {
+		MockitoAnnotations.openMocks(this);
+		
+		Product proc = new Product();
+		proc.setProductid(1);
+		pch2 = new Productcosthistory();
+		pch2.setProduct(proc);
+		pch2.setEnddate(Timestamp.valueOf("2024-03-10 10:05:23"));
+		pch2.setStandardcost(BigDecimal.valueOf(-2));
+	}
+	
+	@BeforeEach
+	void setUp3() {
+		MockitoAnnotations.openMocks(this);
+		pch4 = new Productcosthistory();
+	}
+	
+	@BeforeEach
+	void setUp4() {
+		MockitoAnnotations.openMocks(this);
+		
+		pch0op = Optional.of(pch0);
+		
+		Product proc = new Product();
+		proc.setProductid(1);
+		pch1 = new Productcosthistory();
+		pch1.setProduct(proc);
+		pch1.setEnddate(Timestamp.valueOf("2022-03-10 12:12:23"));
+		pch1.setStandardcost(BigDecimal.valueOf(23500));
+	}
+	
+	@BeforeEach
+	void setUp5() {
+		MockitoAnnotations.openMocks(this);
+		
+		Product proc = new Product();
+		proc.setProductid(1);
+		pch3 = new Productcosthistory();
+		pch3.setProduct(proc);
+		pch3.setEnddate(Timestamp.valueOf("2024-03-10 10:05:23"));
+		pch3.setStandardcost(BigDecimal.valueOf(-2));
+	}
 
+	// <------------------------> Save <------------------------>
+	
 	@Test
 	void testThatSaveAnProduct() {
 		when(pchRepository.save(pch0)).thenReturn(pch0);
@@ -62,19 +113,47 @@ class ProductcosthistoryTest {
 		assertTrue(test.getStandardcost().doubleValue() >= 0);
 	}
 	
-	@BeforeEach
-	void setUp2() {
-		MockitoAnnotations.openMocks(this);
+	// <------------------------> Save Throws <------------------------>
+	
+	
+	@Test
+	void testExceptionSave() {
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			pchService.saveProductcosthistory(pch2);
+		});
 		
-		pch0op = Optional.of(pch0);
+		pch2.setEnddate(Timestamp.valueOf("2022-03-10 10:05:23"));
+		
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			pchService.saveProductcosthistory(pch2);
+		});
+	}
+	
+	// <------------------------> Empty Save <------------------------>
+	
+	@Test
+	void testExceptionEmpty() {
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			pchService.saveProductcosthistory(pch2);
+		});
 		
 		Product proc = new Product();
 		proc.setProductid(1);
-		pch1 = new Productcosthistory();
-		pch1.setProduct(proc);
-		pch1.setEnddate(Timestamp.valueOf("2022-03-10 12:12:23"));
-		pch1.setStandardcost(BigDecimal.valueOf(23500));
+		pch2.setProduct(proc);
+		
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			pchService.saveProductcosthistory(pch2);
+		});
+		
+		pch2.setEnddate(Timestamp.valueOf("2022-03-10 10:05:23"));
+		
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			pchService.saveProductcosthistory(pch2);
+		});
 	}
+	
+	
+	// <------------------------> Edit <------------------------>
 	
 	@Test
 	void testThatEditAnProduct() {
@@ -86,4 +165,49 @@ class ProductcosthistoryTest {
 		assertEquals(test.getEnddate(), pch1.getEnddate());
 		assertEquals(test.getStandardcost(), pch1.getStandardcost());
 	}
+	
+	
+	// <------------------------> Edit Throws <------------------------>
+	
+	@Test
+	void testExceptionEdit() {
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			when(pchRepository.findById(1)).thenReturn(pch0op);
+			pchService.editProductcosthistory(pch3, 1);
+		});
+		
+		pch3.setEnddate(Timestamp.valueOf("2022-03-10 10:05:23"));
+		
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			when(pchRepository.findById(1)).thenReturn(pch0op);
+			pchService.editProductcosthistory(pch3, 1);
+		});
+	}
+	
+	// <------------------------> Empty Edit <------------------------>
+	
+	@Test
+	void testExceptionProductEditEmpty() {
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			when(pchRepository.findById(1)).thenReturn(pch0op);
+			pchService.editProductcosthistory(pch4, 1);
+		});
+		
+		Product proc = new Product();
+		proc.setProductid(1);
+		pch2.setProduct(proc);
+		
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			when(pchRepository.findById(1)).thenReturn(pch0op);
+			pchService.editProductcosthistory(pch4, 1);
+		});
+		
+		pch4.setEnddate(Timestamp.valueOf("2022-03-10 10:05:23"));
+		
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			when(pchRepository.findById(1)).thenReturn(pch0op);
+			pchService.editProductcosthistory(pch4, 1);
+		});
+	}
+	
 }

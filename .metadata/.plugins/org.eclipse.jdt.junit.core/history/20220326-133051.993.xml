@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="ProductcosthistoryTest" project="taller1" tests="7" started="7" failures="0" errors="0" ignored="0">
+  <testsuite name="com.taller1.demo.mock.ProductcosthistoryTest" time="0.366" displayname="ProductcosthistoryTest" uniqueid="[engine:junit-jupiter]/[class:com.taller1.demo.mock.ProductcosthistoryTest]">
+    <testcase name="testExceptionEdit" classname="com.taller1.demo.mock.ProductcosthistoryTest" time="0.347" displayname="testExceptionEdit()" uniqueid="[engine:junit-jupiter]/[class:com.taller1.demo.mock.ProductcosthistoryTest]/[method:testExceptionEdit()]"/>
+    <testcase name="testExceptionSave" classname="com.taller1.demo.mock.ProductcosthistoryTest" time="0.002" displayname="testExceptionSave()" uniqueid="[engine:junit-jupiter]/[class:com.taller1.demo.mock.ProductcosthistoryTest]/[method:testExceptionSave()]"/>
+    <testcase name="testExceptionEmpty" classname="com.taller1.demo.mock.ProductcosthistoryTest" time="0.002" displayname="testExceptionEmpty()" uniqueid="[engine:junit-jupiter]/[class:com.taller1.demo.mock.ProductcosthistoryTest]/[method:testExceptionEmpty()]"/>
+    <testcase name="testThatEditAnProduct" classname="com.taller1.demo.mock.ProductcosthistoryTest" time="0.003" displayname="testThatEditAnProduct()" uniqueid="[engine:junit-jupiter]/[class:com.taller1.demo.mock.ProductcosthistoryTest]/[method:testThatEditAnProduct()]"/>
+    <testcase name="testThatSaveAnProduct" classname="com.taller1.demo.mock.ProductcosthistoryTest" time="0.002" displayname="testThatSaveAnProduct()" uniqueid="[engine:junit-jupiter]/[class:com.taller1.demo.mock.ProductcosthistoryTest]/[method:testThatSaveAnProduct()]"/>
+    <testcase name="testExceptionProductEditEmpty" classname="com.taller1.demo.mock.ProductcosthistoryTest" time="0.003" displayname="testExceptionProductEditEmpty()" uniqueid="[engine:junit-jupiter]/[class:com.taller1.demo.mock.ProductcosthistoryTest]/[method:testExceptionProductEditEmpty()]"/>
+    <testcase name="testConstraints" classname="com.taller1.demo.mock.ProductcosthistoryTest" time="0.002" displayname="testConstraints()" uniqueid="[engine:junit-jupiter]/[class:com.taller1.demo.mock.ProductcosthistoryTest]/[method:testConstraints()]"/>
+  </testsuite>
+</testrun>

@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import com.taller1.demo.model.prod.Productcosthistory;
 import com.taller1.demo.repositories.ProductcosthistoryRepository;
+import com.taller1.demo.services.interfaces.ProductcosthistoryService;
 
 public class ProductcosthistoryServiceImp implements ProductcosthistoryService {
 
@@ -20,8 +21,12 @@ public class ProductcosthistoryServiceImp implements ProductcosthistoryService {
 			throw new NullPointerException();
 		if (pch.getProduct() == null)
 			throw new IllegalArgumentException("Product Not Exist");
+		if (pch.getEnddate() == null)
+			throw new IllegalArgumentException("EndDate Null");
 		if (pch.getEnddate().compareTo(new Timestamp(System.currentTimeMillis())) > 0)
 			throw new IllegalArgumentException("End Date Greater Than Actual");
+		if (pch.getStandardcost() == null)
+			throw new IllegalArgumentException("Standar Cost Null");
 		if (pch.getStandardcost().intValue() < 0)
 			throw new IllegalArgumentException("Standar Cost");
 		return pchRepository.save(pch);
@@ -31,10 +36,16 @@ public class ProductcosthistoryServiceImp implements ProductcosthistoryService {
 	public Productcosthistory editProductcosthistory(Productcosthistory pch, Integer id) {
 		Optional<Productcosthistory> op = pchRepository.findById(id);
 		Productcosthistory oppch = op.get();
+		if (pch == null) 
+			throw new NullPointerException();
 		if (pch.getProduct() == null)
 			throw new IllegalArgumentException("Product Not Exist");
+		if (pch.getEnddate() == null)
+			throw new IllegalArgumentException("EndDate Null");
 		if (pch.getEnddate().compareTo(new Timestamp(System.currentTimeMillis())) > 0)
 			throw new IllegalArgumentException("End Date Greater Than Actual");
+		if (pch.getStandardcost() == null)
+			throw new IllegalArgumentException("Standar Cost Null");
 		if (pch.getStandardcost().intValue() < 0)
 			throw new IllegalArgumentException("Standar Cost");
 		oppch.setProduct(pch.getProduct());;
