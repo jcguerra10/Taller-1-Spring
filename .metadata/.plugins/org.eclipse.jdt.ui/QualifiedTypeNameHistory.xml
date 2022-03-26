@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="org.springframework.data.repository.CrudRepository"/>
-    <fullyQualifiedTypeName name="com.taller1.demo.repositories.LocationRepository"/>
     <fullyQualifiedTypeName name="java.math.BigDecimal"/>
     <fullyQualifiedTypeName name="com.taller1.demo.services.LocationServiceImp"/>
     <fullyQualifiedTypeName name="com.taller1.demo.repositories.ProductRepository"/>
@@ -10,11 +9,8 @@
     <fullyQualifiedTypeName name="com.taller1.demo.model.prod.Productcategory"/>
     <fullyQualifiedTypeName name="com.taller1.demo.model.prod.Productsubcategory"/>
     <fullyQualifiedTypeName name="java.sql.Date"/>
-    <fullyQualifiedTypeName name="java.util.Date"/>
-    <fullyQualifiedTypeName name="org.junit.jupiter.api.Assertions"/>
     <fullyQualifiedTypeName name="com.taller1.demo.model.prod.Productcosthistory"/>
     <fullyQualifiedTypeName name="com.taller1.demo.model.prod.Product"/>
-    <fullyQualifiedTypeName name="java.sql.Timestamp"/>
     <fullyQualifiedTypeName name="com.taller1.demo.services.ProductcosthistoryServiceImp"/>
     <fullyQualifiedTypeName name="com.taller1.demo.services.ProductcosthistoryService"/>
     <fullyQualifiedTypeName name="com.taller1.demo.repositories.ProductcosthistoryRepository"/>
@@ -22,4 +18,11 @@
     <fullyQualifiedTypeName name="com.taller1.demo.services.ProductInventoryServiceImp"/>
     <fullyQualifiedTypeName name="com.taller1.demo.model.prod.Productinventory"/>
     <fullyQualifiedTypeName name="com.taller1.demo.model.prod.Location"/>
+    <fullyQualifiedTypeName name="java.lang.NullPointerException"/>
+    <fullyQualifiedTypeName name="org.springframework.transaction.annotation.Transactional"/>
+    <fullyQualifiedTypeName name="com.taller1.demo.repositories.LocationRepository"/>
+    <fullyQualifiedTypeName name="java.lang.IllegalArgumentException"/>
+    <fullyQualifiedTypeName name="org.junit.jupiter.api.Assertions"/>
+    <fullyQualifiedTypeName name="java.sql.Timestamp"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
 </qualifiedTypeNameHistroy>

@@ -1,8 +1,0 @@
-package com.taller1.demo.services;
-
-import com.taller1.demo.model.prod.Productcosthistory;
-
-public interface ProductcosthistoryService {
-    public Productcosthistory saveProductcosthistory();
-    public Productcosthistory editProductcosthistory();
-}

@@ -21,14 +21,12 @@ public class ProductInventoryServiceImp implements ProductInventoryService {
 	@Transactional
 	@Override
 	public Productinventory saveProductInventory(Productinventory proInventory) {
-		if (proInventory == null) {
+		if (proInventory == null)
 			throw new NullPointerException();
-		}
 		if (proInventory.getLocation() == null) 
 			throw new NullPointerException();
 		if (lr.existsById(proInventory.getLocation().getLocationid()))
 			throw new NullPointerException();
-		
 		if (proInventory.getQuantity() < 0)
 			throw new IllegalArgumentException();
 		
@@ -38,10 +36,21 @@ public class ProductInventoryServiceImp implements ProductInventoryService {
 	@Transactional
 	@Override
 	public Productinventory editProductInventory(Productinventory proInventory, Integer id) {
-		Optional<Productinventory> optional = proinRepository.findById(id);
-		Productinventory getOptional = optional.get();
-		getOptional = proInventory;
-		return proinRepository.save(getOptional);
+		Optional<Productinventory> op = proinRepository.findById(id);
+		Productinventory opLoc = op.get();
+		if (proInventory == null)
+			throw new NullPointerException();
+		if (proInventory.getLocation() == null) 
+			throw new NullPointerException();
+		if (lr.existsById(proInventory.getLocation().getLocationid()))
+			throw new NullPointerException();
+		if (proInventory.getQuantity() < 0)
+			throw new IllegalArgumentException();
+		opLoc.setId(proInventory.getId());
+		opLoc.setProduct(proInventory.getProduct());
+		opLoc.setLocation(proInventory.getLocation());
+		opLoc.setQuantity(proInventory.getQuantity());
+		return proinRepository.save(opLoc);
 	}
 
 }

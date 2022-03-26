@@ -1,0 +1,43 @@
+package com.taller1.demo.services;
+
+import java.util.Optional;
+
+import com.taller1.demo.model.prod.Location;
+import com.taller1.demo.repositories.LocationRepository;
+
+public class LocationServiceImp implements LocationService {
+
+	public LocationRepository locationRepository;
+	
+	public LocationServiceImp(LocationRepository locationRepository) {
+		this.locationRepository = locationRepository;
+	}
+	
+	@Override
+	public Location saveLocation(Location loc) {
+		if (loc.getName().length() < 5)
+			throw new IllegalArgumentException("Name Length");
+		if (loc.getAvailability().intValue() < 1 && loc.getAvailability().intValue() > 10)
+			throw new IllegalArgumentException("Availability");
+		if (loc.getCostrate().intValue() < 0 && loc.getCostrate().intValue() > 1)
+			throw new IllegalArgumentException();
+		
+		return locationRepository.save(loc);
+	}
+
+	@Override
+	public Location editLocation(Location loc, Integer locId) {
+		Location opLoc = locationRepository.findById(locId).get();
+		if (loc.getName().length() < 5)
+			throw new IllegalArgumentException("Name Length");
+		if (loc.getAvailability().intValue() < 1 && loc.getAvailability().intValue() > 10)
+			throw new IllegalArgumentException("Availability");
+		if (loc.getCostrate().intValue() < 0 && loc.getCostrate().intValue() > 1)
+			throw new IllegalArgumentException();
+		opLoc.setName(loc.getName());
+		opLoc.setAvailability(loc.getAvailability());
+		opLoc.setCostrate(loc.getCostrate());
+		return locationRepository.save(opLoc);
+	}
+
+}

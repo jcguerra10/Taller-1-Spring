@@ -1,5 +1,6 @@
 package com.taller1.demo.mock;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
@@ -82,7 +83,12 @@ class ProductInventoryTest {
 	@Test
 	void testThatEditAnProduct() {
 		when(piRepository.findById(1)).thenReturn(pInventory0op);
-		when(piRepository.save(pInventory1)).thenReturn(pInventory1);
+		when(piRepository.save(pInventory0)).thenReturn(pInventory0);
+		Productinventory test = piService.editProductInventory(pInventory1, 1);
+		assertEquals(test.getId(), pInventory1.getId());
+		assertEquals(test.getLocation(), pInventory1.getLocation());
+		assertEquals(test.getProduct(), pInventory1.getProduct());
+		assertEquals(test.getQuantity(), pInventory1.getQuantity());
 		assertNotNull(piService.editProductInventory(pInventory1, 1));
 	}
 }

@@ -1,5 +1,6 @@
 package com.taller1.demo.mock;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
@@ -46,7 +47,7 @@ class ProductTest {
 		product0.setSellstartdate(Timestamp.valueOf("2022-03-12 10:30:04"));
 		product0.setSellenddate(Timestamp.valueOf("2022-03-13 10:30:04")); //
 		product0.setWeight(BigDecimal.valueOf(12));
-		product0.setSize("1");
+		product0.setSize(BigDecimal.valueOf(2));
 	}
 
 	@Test
@@ -65,8 +66,10 @@ class ProductTest {
 		assertTrue(testLoc.getProductnumber().equals("1"));
 		assertTrue(testLoc.getSellstartdate().compareTo(testLoc.getSellenddate()) < 0 , "Date");
 		assertTrue(testLoc.getWeight().doubleValue() > 0);
-		assertTrue(Double.parseDouble(testLoc.getSize()) > 0);
+		assertTrue(testLoc.getSize().intValue() > 0);
 	}
+	
+	
 	
 	@BeforeEach
 	void setUp2() {
@@ -83,13 +86,20 @@ class ProductTest {
 		product1.setSellstartdate(Timestamp.valueOf("2022-03-12 10:30:04"));
 		product1.setSellenddate(Timestamp.valueOf("2022-03-13 10:30:04")); //
 		product1.setWeight(BigDecimal.valueOf(12));
-		product1.setSize("1");
+		product1.setSize(BigDecimal.valueOf(1));
 	}
 	
 	@Test
 	void testThatEditAnProduct() {
 		when(productRepository.findById(1)).thenReturn(product0op);
-		when(productRepository.save(product1)).thenReturn(product1);
-		assertNotNull(ps.editProduct(product1, 1));
+		when(productRepository.save(product0)).thenReturn(product0);
+		Product test = ps.editProduct(product1, 1);
+		assertEquals(test.getProductid(), product1.getProductid());
+		assertEquals(test.getProductsubcategory(), product1.getProductsubcategory());
+		assertEquals(test.getProductsubcategory().getProductcategory(), product1.getProductsubcategory().getProductcategory());
+		assertEquals(test.getSellstartdate(), product1.getSellstartdate());
+		assertEquals(test.getSellenddate(), product1.getSellenddate());
+		assertEquals(test.getWeight(), product1.getWeight());
+		assertEquals(test.getSize(), product1.getSize());
 	}
 }

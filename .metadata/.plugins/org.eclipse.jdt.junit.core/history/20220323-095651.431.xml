@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="ProductInventoryTest" project="taller1" tests="2" started="2" failures="0" errors="0" ignored="0">
-  <testsuite name="com.taller1.demo.ProductInventoryTest" time="0.287" displayname="ProductInventoryTest" uniqueid="[engine:junit-jupiter]/[class:com.taller1.demo.ProductInventoryTest]">
-    <testcase name="testThatSaveAnProduct" classname="com.taller1.demo.ProductInventoryTest" time="0.284" displayname="testThatSaveAnProduct()" uniqueid="[engine:junit-jupiter]/[class:com.taller1.demo.ProductInventoryTest]/[method:testThatSaveAnProduct()]"/>
-    <testcase name="testConstraints" classname="com.taller1.demo.ProductInventoryTest" time="0.002" displayname="testConstraints()" uniqueid="[engine:junit-jupiter]/[class:com.taller1.demo.ProductInventoryTest]/[method:testConstraints()]"/>
-  </testsuite>
-</testrun>

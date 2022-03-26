@@ -1,0 +1,37 @@
+package com.taller1.demo.services;
+
+import java.util.Optional;
+
+import com.taller1.demo.model.prod.Productcosthistory;
+import com.taller1.demo.repositories.ProductcosthistoryRepository;
+
+public class ProductcosthistoryServiceImp implements ProductcosthistoryService {
+
+	private ProductcosthistoryRepository pchRepository;
+	
+	public ProductcosthistoryServiceImp(ProductcosthistoryRepository pchRepository) {
+		this.pchRepository = pchRepository;
+	}
+
+	@Override
+	public Productcosthistory saveProductcosthistory(Productcosthistory pch) {
+		return pchRepository.save(pch);
+	}
+
+	@Override
+	public Productcosthistory editProductcosthistory(Productcosthistory pch, Integer id) {
+		Optional<Productcosthistory> op = pchRepository.findById(id);
+		Productcosthistory oppch = op.get();
+		if (pch.getProduct() == null)
+			throw new IllegalArgumentException("Name Length");
+		if (pch.getAvailability().intValue() < 1 && pch.getAvailability().intValue() > 10)
+			throw new IllegalArgumentException("Availability");
+		if (pch.getCostrate().intValue() < 0 && pch.getCostrate().intValue() > 1)
+			throw new IllegalArgumentException();
+		oppch.setName(pch.getName());
+		oppch.setAvailability(pch.getAvailability());
+		oppch.setCostrate(pch.getCostrate());
+		return pchationRepository.save(oppch);
+	}
+
+}

@@ -1,0 +1,29 @@
+package com.taller1.demo.services;
+
+import java.util.Optional;
+
+import com.taller1.demo.model.prod.Location;
+import com.taller1.demo.repositories.LocationRepository;
+
+public class LocationServiceImp implements LocationService {
+
+	public LocationRepository locationRepository;
+	
+	public LocationServiceImp(LocationRepository locationRepository) {
+		this.locationRepository = locationRepository;
+	}
+	
+	@Override
+	public Location saveLocation(Location loc) {
+		return locationRepository.save(loc);
+	}
+
+	@Override
+	public Location editLocation(Location loc, Integer locId) {
+		Optional<Location> opLoc = locationRepository.findById(locId);
+		Location editLoc = opLoc.get();
+		editLoc = loc;
+		return locationRepository.save(editLoc);
+	}
+
+}

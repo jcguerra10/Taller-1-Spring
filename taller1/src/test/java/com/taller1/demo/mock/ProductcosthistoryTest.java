@@ -1,5 +1,6 @@
 package com.taller1.demo.mock;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
@@ -78,7 +79,11 @@ class ProductcosthistoryTest {
 	@Test
 	void testThatEditAnProduct() {
 		when(pchRepository.findById(1)).thenReturn(pch0op);
-		when(pchRepository.save(pch1)).thenReturn(pch1);
-		assertNotNull(pchService.editProductcosthistory(pch1, 1));
+		when(pchRepository.save(pch0)).thenReturn(pch0);
+		Productcosthistory test = pchService.editProductcosthistory(pch1, 1);
+		assertEquals(test.getId(), pch1.getId());
+		assertEquals(test.getProduct(), pch1.getProduct());
+		assertEquals(test.getEnddate(), pch1.getEnddate());
+		assertEquals(test.getStandardcost(), pch1.getStandardcost());
 	}
 }
