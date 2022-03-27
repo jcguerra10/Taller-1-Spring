@@ -2,10 +2,14 @@ package com.taller1.demo.services;
 
 import java.util.Optional;
 
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.taller1.demo.model.prod.Productsubcategory;
 import com.taller1.demo.repositories.ProductsubcategoryRepository;
 import com.taller1.demo.services.interfaces.ProductsubcategoryService;
 
+@Service
 public class ProductsubcategoryImp implements ProductsubcategoryService {
 
 private ProductsubcategoryRepository psRepository;
@@ -14,6 +18,7 @@ private ProductsubcategoryRepository psRepository;
 		this.psRepository = psRepository;
 	}
 
+	@Transactional
 	@Override
 	public Productsubcategory saveProductsubcategory(Productsubcategory pc) {
 		if(pc == null)
@@ -21,6 +26,7 @@ private ProductsubcategoryRepository psRepository;
 		return psRepository.save(pc);
 	}
 
+	@Transactional
 	@Override
 	public Productsubcategory editProductsubcategory(Productsubcategory pc, Integer i) {
 		Optional<Productsubcategory> op = psRepository.findById(i);

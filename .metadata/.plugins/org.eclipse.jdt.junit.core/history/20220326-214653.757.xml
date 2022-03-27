@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="ProductInventoryTest (1)" project="taller1" tests="7" started="7" failures="0" errors="0" ignored="0">
+  <testsuite name="com.taller1.demo.integration.ProductInventoryTest" time="0.349" displayname="ProductInventoryTest" uniqueid="[engine:junit-jupiter]/[class:com.taller1.demo.integration.ProductInventoryTest]">
+    <testcase name="testExceptionEdit" classname="com.taller1.demo.integration.ProductInventoryTest" time="0.328" displayname="testExceptionEdit()" uniqueid="[engine:junit-jupiter]/[class:com.taller1.demo.integration.ProductInventoryTest]/[method:testExceptionEdit()]"/>
+    <testcase name="testExceptionSave" classname="com.taller1.demo.integration.ProductInventoryTest" time="0.003" displayname="testExceptionSave()" uniqueid="[engine:junit-jupiter]/[class:com.taller1.demo.integration.ProductInventoryTest]/[method:testExceptionSave()]"/>
+    <testcase name="testThatEditAnProduct" classname="com.taller1.demo.integration.ProductInventoryTest" time="0.005" displayname="testThatEditAnProduct()" uniqueid="[engine:junit-jupiter]/[class:com.taller1.demo.integration.ProductInventoryTest]/[method:testThatEditAnProduct()]"/>
+    <testcase name="testExceptionSaveEmpty" classname="com.taller1.demo.integration.ProductInventoryTest" time="0.003" displayname="testExceptionSaveEmpty()" uniqueid="[engine:junit-jupiter]/[class:com.taller1.demo.integration.ProductInventoryTest]/[method:testExceptionSaveEmpty()]"/>
+    <testcase name="testThatSaveAnProduct" classname="com.taller1.demo.integration.ProductInventoryTest" time="0.002" displayname="testThatSaveAnProduct()" uniqueid="[engine:junit-jupiter]/[class:com.taller1.demo.integration.ProductInventoryTest]/[method:testThatSaveAnProduct()]"/>
+    <testcase name="testExceptionEditEmpty" classname="com.taller1.demo.integration.ProductInventoryTest" time="0.003" displayname="testExceptionEditEmpty()" uniqueid="[engine:junit-jupiter]/[class:com.taller1.demo.integration.ProductInventoryTest]/[method:testExceptionEditEmpty()]"/>
+    <testcase name="testConstraints" classname="com.taller1.demo.integration.ProductInventoryTest" time="0.002" displayname="testConstraints()" uniqueid="[engine:junit-jupiter]/[class:com.taller1.demo.integration.ProductInventoryTest]/[method:testConstraints()]"/>
+  </testsuite>
+</testrun>

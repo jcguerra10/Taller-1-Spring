@@ -1,11 +1,16 @@
 package com.taller1.demo.services;
 
+import java.util.List;
 import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.taller1.demo.model.prod.Location;
 import com.taller1.demo.repositories.LocationRepository;
 import com.taller1.demo.services.interfaces.LocationService;
 
+@Service
 public class LocationServiceImp implements LocationService {
 
 	private LocationRepository locationRepository;
@@ -14,6 +19,7 @@ public class LocationServiceImp implements LocationService {
 		this.locationRepository = locationRepository;
 	}
 	
+	@Transactional
 	@Override
 	public Location saveLocation(Location loc) {
 		if (loc == null )
@@ -30,12 +36,16 @@ public class LocationServiceImp implements LocationService {
 			throw new IllegalArgumentException("CostRate Null");
 		if (loc.getCostrate().intValue() < 0 || loc.getCostrate().intValue() > 1)
 			throw new IllegalArgumentException();
-		
 		return locationRepository.save(loc);
 	}
 
+	@Transactional
 	@Override
 	public Location editLocation(Location loc, Integer locId) {
+		
+		Iterable<Location> list = locationRepository.findAll();
+	
+		
 		Optional<Location> op = locationRepository.findById(locId);
 		Location opLoc = op.get();
 		if (loc == null )

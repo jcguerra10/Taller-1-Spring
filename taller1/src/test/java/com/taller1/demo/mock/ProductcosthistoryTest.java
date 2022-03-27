@@ -157,9 +157,9 @@ class ProductcosthistoryTest {
 	
 	@Test
 	void testThatEditAnProduct() {
-		when(pchRepository.findById(1)).thenReturn(pch0op);
+		when(pchRepository.findById(pch0.getId())).thenReturn(pch0op);
 		when(pchRepository.save(pch0)).thenReturn(pch0);
-		Productcosthistory test = pchService.editProductcosthistory(pch1, 1);
+		Productcosthistory test = pchService.editProductcosthistory(pch1, pch0.getId());
 		assertEquals(test.getId(), pch1.getId());
 		assertEquals(test.getProduct(), pch1.getProduct());
 		assertEquals(test.getEnddate(), pch1.getEnddate());
@@ -172,15 +172,15 @@ class ProductcosthistoryTest {
 	@Test
 	void testExceptionEdit() {
 		Assertions.assertThrows(IllegalArgumentException.class, () -> {
-			when(pchRepository.findById(1)).thenReturn(pch0op);
-			pchService.editProductcosthistory(pch3, 1);
+			when(pchRepository.findById(pch0.getId())).thenReturn(pch0op);
+			pchService.editProductcosthistory(pch3, pch0.getId());
 		});
 		
 		pch3.setEnddate(Timestamp.valueOf("2022-03-10 10:05:23"));
 		
 		Assertions.assertThrows(IllegalArgumentException.class, () -> {
-			when(pchRepository.findById(1)).thenReturn(pch0op);
-			pchService.editProductcosthistory(pch3, 1);
+			when(pchRepository.findById(pch0.getId())).thenReturn(pch0op);
+			pchService.editProductcosthistory(pch3, pch0.getId());
 		});
 	}
 	
@@ -189,8 +189,8 @@ class ProductcosthistoryTest {
 	@Test
 	void testExceptionProductEditEmpty() {
 		Assertions.assertThrows(IllegalArgumentException.class, () -> {
-			when(pchRepository.findById(1)).thenReturn(pch0op);
-			pchService.editProductcosthistory(pch4, 1);
+			when(pchRepository.findById(pch0.getId())).thenReturn(pch0op);
+			pchService.editProductcosthistory(pch4, pch0.getId());
 		});
 		
 		Product proc = new Product();
@@ -198,15 +198,15 @@ class ProductcosthistoryTest {
 		pch2.setProduct(proc);
 		
 		Assertions.assertThrows(IllegalArgumentException.class, () -> {
-			when(pchRepository.findById(1)).thenReturn(pch0op);
-			pchService.editProductcosthistory(pch4, 1);
+			when(pchRepository.findById(pch0.getId())).thenReturn(pch0op);
+			pchService.editProductcosthistory(pch4, pch0.getId());
 		});
 		
 		pch4.setEnddate(Timestamp.valueOf("2022-03-10 10:05:23"));
 		
 		Assertions.assertThrows(IllegalArgumentException.class, () -> {
-			when(pchRepository.findById(1)).thenReturn(pch0op);
-			pchService.editProductcosthistory(pch4, 1);
+			when(pchRepository.findById(pch0.getId())).thenReturn(pch0op);
+			pchService.editProductcosthistory(pch4, pch0.getId());
 		});
 	}
 	

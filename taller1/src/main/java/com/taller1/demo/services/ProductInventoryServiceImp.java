@@ -2,6 +2,7 @@ package com.taller1.demo.services;
 
 import java.util.Optional;
 
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.taller1.demo.model.prod.Productinventory;
@@ -9,6 +10,7 @@ import com.taller1.demo.repositories.LocationRepository;
 import com.taller1.demo.repositories.ProductInventoryRepository;
 import com.taller1.demo.services.interfaces.ProductInventoryService;
 
+@Service
 public class ProductInventoryServiceImp implements ProductInventoryService {
 
 	private ProductInventoryRepository proinRepository;

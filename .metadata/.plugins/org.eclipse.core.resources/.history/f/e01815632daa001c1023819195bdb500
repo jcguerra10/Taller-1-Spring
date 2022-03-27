@@ -1,8 +1,0 @@
-package com.taller1.demo;
-
-import org.junit.jupiter.api.Test;
-
-class ProductcosthistoryTest {
-
-    
-}

@@ -2,10 +2,14 @@ package com.taller1.demo.services;
 
 import java.util.Optional;
 
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.taller1.demo.model.prod.Product;
 import com.taller1.demo.repositories.ProductRepository;
 import com.taller1.demo.services.interfaces.ProductService;
 
+@Service
 public class ProductServiceImp implements ProductService {
 	
 	public ProductRepository productRepository;
@@ -14,6 +18,7 @@ public class ProductServiceImp implements ProductService {
 		this.productRepository = productRepository;
 	}
 	
+	@Transactional
 	@Override
 	public Product saveProduct(Product pro) {
 		if(pro == null)
@@ -54,6 +59,7 @@ public class ProductServiceImp implements ProductService {
 		return productRepository.save(pro);		
 	}
 
+	@Transactional
 	@Override
 	public Product editProduct(Product pro, Integer id) {
 		Optional<Product> opPro = productRepository.findById(id);

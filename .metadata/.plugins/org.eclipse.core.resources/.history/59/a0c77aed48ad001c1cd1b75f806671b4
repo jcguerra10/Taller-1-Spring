@@ -1,0 +1,39 @@
+package com.taller1.demo.services;
+
+import java.util.Optional;
+
+import org.springframework.transaction.annotation.Transactional;
+
+import com.taller1.demo.model.prod.Productcategory;
+import com.taller1.demo.repositories.ProductcategoryRepository;
+import com.taller1.demo.services.interfaces.ProductcategoryService;
+
+public class ProductcategoryServiceImp implements ProductcategoryService {
+	
+
+	private ProductcategoryRepository pcRepository;
+	
+	public ProductcategoryServiceImp(ProductcategoryRepository pcRepository) {
+		this.pcRepository = pcRepository;
+	}
+
+	@Transactional
+	@Override
+	public Productcategory saveProductcategory(Productcategory pc) {
+		if(pc == null)
+			throw new NullPointerException("Null Object");
+		return pcRepository.save(pc);
+	}
+
+	@Transactional
+	@Override
+	public Productcategory editProductcategory(Productcategory pc, Integer i) {
+		Optional<Productcategory> op = pcRepository.findById(i);
+		Productcategory opLoc = op.get();
+		if(pc == null)
+			throw new NullPointerException("Null Object");
+		opLoc.setName(pc.getName());
+		return pcRepository.save(opLoc);
+	}
+
+}

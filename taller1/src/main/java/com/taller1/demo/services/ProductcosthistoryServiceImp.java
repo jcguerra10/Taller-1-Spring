@@ -3,10 +3,15 @@ package com.taller1.demo.services;
 import java.sql.Timestamp;
 import java.util.Optional;
 
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.taller1.demo.model.prod.Productcosthistory;
+import com.taller1.demo.model.prod.ProductcosthistoryPK;
 import com.taller1.demo.repositories.ProductcosthistoryRepository;
 import com.taller1.demo.services.interfaces.ProductcosthistoryService;
 
+@Service
 public class ProductcosthistoryServiceImp implements ProductcosthistoryService {
 
 	private ProductcosthistoryRepository pchRepository;
@@ -15,6 +20,7 @@ public class ProductcosthistoryServiceImp implements ProductcosthistoryService {
 		this.pchRepository = pchRepository;
 	}
 
+	@Transactional
 	@Override
 	public Productcosthistory saveProductcosthistory(Productcosthistory pch) {
 		if (pch == null) 
@@ -32,9 +38,10 @@ public class ProductcosthistoryServiceImp implements ProductcosthistoryService {
 		return pchRepository.save(pch);
 	}
 
+	@Transactional
 	@Override
-	public Productcosthistory editProductcosthistory(Productcosthistory pch, Integer id) {
-		Optional<Productcosthistory> op = pchRepository.findById(id);
+	public Productcosthistory editProductcosthistory(Productcosthistory pch, ProductcosthistoryPK productcosthistoryPK) {
+		Optional<Productcosthistory> op = pchRepository.findById(productcosthistoryPK);
 		Productcosthistory oppch = op.get();
 		if (pch == null) 
 			throw new NullPointerException();

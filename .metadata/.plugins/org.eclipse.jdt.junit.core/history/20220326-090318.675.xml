@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="ProductcosthistoryTest" project="taller1" tests="3" started="3" failures="0" errors="0" ignored="0">
-  <testsuite name="com.taller1.demo.mock.ProductcosthistoryTest" time="0.319" displayname="ProductcosthistoryTest" uniqueid="[engine:junit-jupiter]/[class:com.taller1.demo.mock.ProductcosthistoryTest]">
-    <testcase name="testThatEditAnProduct" classname="com.taller1.demo.mock.ProductcosthistoryTest" time="0.315" displayname="testThatEditAnProduct()" uniqueid="[engine:junit-jupiter]/[class:com.taller1.demo.mock.ProductcosthistoryTest]/[method:testThatEditAnProduct()]"/>
-    <testcase name="testThatSaveAnProduct" classname="com.taller1.demo.mock.ProductcosthistoryTest" time="0.001" displayname="testThatSaveAnProduct()" uniqueid="[engine:junit-jupiter]/[class:com.taller1.demo.mock.ProductcosthistoryTest]/[method:testThatSaveAnProduct()]"/>
-    <testcase name="testConstraints" classname="com.taller1.demo.mock.ProductcosthistoryTest" time="0.001" displayname="testConstraints()" uniqueid="[engine:junit-jupiter]/[class:com.taller1.demo.mock.ProductcosthistoryTest]/[method:testConstraints()]"/>
-  </testsuite>
-</testrun>
