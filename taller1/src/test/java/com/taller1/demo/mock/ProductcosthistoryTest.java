@@ -98,7 +98,7 @@ class ProductcosthistoryTest {
 	// <------------------------> Save <------------------------>
 	
 	@Test
-	void testThatSaveAnProduct() {
+	void testThatSave() {
 		when(pchRepository.save(pch0)).thenReturn(pch0);
 		assertNotNull(pchService.saveProductcosthistory(pch0));
 	}
@@ -156,7 +156,7 @@ class ProductcosthistoryTest {
 	// <------------------------> Edit <------------------------>
 	
 	@Test
-	void testThatEditAnProduct() {
+	void testThatEdit() {
 		when(pchRepository.findById(pch0.getId())).thenReturn(pch0op);
 		when(pchRepository.save(pch0)).thenReturn(pch0);
 		Productcosthistory test = pchService.editProductcosthistory(pch1, pch0.getId());
@@ -187,7 +187,7 @@ class ProductcosthistoryTest {
 	// <------------------------> Empty Edit <------------------------>
 	
 	@Test
-	void testExceptionProductEditEmpty() {
+	void testExceptionEditEmpty() {
 		Assertions.assertThrows(IllegalArgumentException.class, () -> {
 			when(pchRepository.findById(pch0.getId())).thenReturn(pch0op);
 			pchService.editProductcosthistory(pch4, pch0.getId());

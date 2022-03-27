@@ -147,7 +147,7 @@ class ProductTest {
 	// <------------------------> Save <------------------------>
 	
 	@Test
-	void testThatSaveAnProduct() {
+	void testThatSave() {
 		assertNotNull(ps.saveProduct(product0));
 	}
 
@@ -235,7 +235,7 @@ class ProductTest {
 	
 
 	@Test
-	void testThatEditAnProduct() {
+	void testThatEdit() {
 		ps.saveProduct(product0);
 		Product test = ps.editProduct(product1, 1);
 		assertEquals(test.getProductid(), product1.getProductid());

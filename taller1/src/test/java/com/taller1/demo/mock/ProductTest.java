@@ -121,7 +121,7 @@ class ProductTest {
 	// <------------------------> Save <------------------------>
 	
 	@Test
-	void testThatSaveAnProduct() {
+	void testThatSave() {
 		when(productRepository.save(product0)).thenReturn(product0);
 		assertNotNull(ps.saveProduct(product0));
 	}
@@ -211,7 +211,7 @@ class ProductTest {
 	
 
 	@Test
-	void testThatEditAnProduct() {
+	void testThatEdit() {
 		when(productRepository.findById(1)).thenReturn(product0op);
 		when(productRepository.save(product0)).thenReturn(product0);
 		Product test = ps.editProduct(product1, 1);

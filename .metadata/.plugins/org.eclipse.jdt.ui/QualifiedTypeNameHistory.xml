@@ -34,10 +34,10 @@
     <fullyQualifiedTypeName name="org.springframework.test.context.ContextConfiguration"/>
     <fullyQualifiedTypeName name="org.junit.jupiter.api.extension.ExtendWith"/>
     <fullyQualifiedTypeName name="org.springframework.test.context.junit.jupiter.SpringExtension"/>
-    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="com.taller1.demo.services.ProductServiceImp"/>
     <fullyQualifiedTypeName name="com.taller1.demo.services.ProductcategoryServiceImp"/>
     <fullyQualifiedTypeName name="org.junit.jupiter.api.BeforeAll"/>
     <fullyQualifiedTypeName name="com.taller1.demo.repositories.ProductRepository"/>
     <fullyQualifiedTypeName name="com.taller1.demo.model.prod.ProductcosthistoryPK"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
 </qualifiedTypeNameHistroy>

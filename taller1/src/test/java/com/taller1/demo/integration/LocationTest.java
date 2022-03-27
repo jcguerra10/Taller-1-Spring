@@ -103,7 +103,7 @@ class LocationTest {
 	// <------------------------> Save <------------------------>
 
 	@Test
-	void testThatSaveAnProduct() {
+	void testThatSave() {
 		assertNotNull(ls.saveLocation(location0));
 	}
 
@@ -162,7 +162,7 @@ class LocationTest {
 	// <------------------------> Edit <------------------------>
 
 	@Test
-	void testThatEditAnProduct() {
+	void testThatEdit() {
 		ls.saveLocation(location0);
 		Location test = ls.editLocation(location1, 1);
 		assertEquals(test.getLocationid(), location1.getLocationid());

@@ -97,7 +97,7 @@ class LocationTest {
 	// <------------------------> Save <------------------------>
 
 	@Test
-	void testThatSaveAnProduct() {
+	void testThatSave() {
 		when(locationRepository.save(location0)).thenReturn(location0);
 		assertNotNull(ls.saveLocation(location0));
 	}
@@ -158,7 +158,7 @@ class LocationTest {
 	// <------------------------> Edit <------------------------>
 
 	@Test
-	void testThatEditAnProduct() {
+	void testThatEdit() {
 		when(locationRepository.findById(1)).thenReturn(location0op);
 		when(locationRepository.save(location0)).thenReturn(location0);
 		Location test = ls.editLocation(location1, 1);

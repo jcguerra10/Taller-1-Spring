@@ -107,7 +107,7 @@ class ProductInventoryTest {
 	// <------------------------> Save <------------------------>
 	
 	@Test
-	void testThatSaveAnProduct() {
+	void testThatSave() {
 		when(piRepository.save(pInventory0)).thenReturn(pInventory0);
 		assertNotNull(piService.saveProductInventory(pInventory0));
 	}
@@ -159,7 +159,7 @@ class ProductInventoryTest {
 	// <------------------------> Edit <------------------------>
 	
 	@Test
-	void testThatEditAnProduct() {
+	void testThatEdit() {
 		when(piRepository.findById(1)).thenReturn(pInventory0op);
 		when(piRepository.save(pInventory0)).thenReturn(pInventory0);
 		Productinventory test = piService.editProductInventory(pInventory1, 1);

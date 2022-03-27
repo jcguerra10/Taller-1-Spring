@@ -158,7 +158,7 @@ class ProductcosthistoryTest {
 	// <------------------------> Save <------------------------>
 	
 	@Test
-	void testThatSaveAnProduct() {
+	void testThatSave() {
 		assertNotNull(pchService.saveProductcosthistory(pch0));
 	}
 	
@@ -214,7 +214,7 @@ class ProductcosthistoryTest {
 	// <------------------------> Edit <------------------------>
 	
 	@Test
-	void testThatEditAnProduct() {
+	void testThatEdit() {
 		pchService.saveProductcosthistory(pch0);
 		Productcosthistory test = pchService.editProductcosthistory(pch1, pch0.getId());
 		assertEquals(test.getId(), pch1.getId());
@@ -244,7 +244,7 @@ class ProductcosthistoryTest {
 	// <------------------------> Empty Edit <------------------------>
 	
 	@Test
-	void testExceptionProductEditEmpty() {
+	void testExceptionEditEmpty() {
 		pchService.saveProductcosthistory(pch0);
 		
 		Assertions.assertThrows(IllegalArgumentException.class, () -> {
