@@ -3,7 +3,6 @@ package com.taller1.demo.integration;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.when;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
@@ -12,24 +11,29 @@ import java.util.Optional;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.taller1.demo.model.prod.Location;
+import com.taller1.demo.Taller1Application;
 import com.taller1.demo.model.prod.Product;
 import com.taller1.demo.model.prod.Productcategory;
 import com.taller1.demo.model.prod.Productsubcategory;
 import com.taller1.demo.repositories.ProductRepository;
 import com.taller1.demo.services.ProductServiceImp;
+import com.taller1.demo.services.ProductcategoryServiceImp;
+import com.taller1.demo.services.ProductsubcategoryImp;
 
+@ContextConfiguration(classes=Taller1Application.class)
+@ExtendWith(SpringExtension.class)
 class ProductTest {
 
-	@Mock
 	private ProductRepository productRepository;
 
-	@InjectMocks
 	private ProductServiceImp ps;
+	private ProductsubcategoryImp pscService;
+	private ProductcategoryServiceImp pcService;
 
 	private Product product0;
 	private Optional<Product> product0op;
@@ -42,31 +46,49 @@ class ProductTest {
 
 	// <------------------------> Setups <------------------------>
 	
+	@Autowired
+	public ProductTest(ProductRepository productRepository, ProductServiceImp ps, ProductsubcategoryImp pscService,
+			ProductcategoryServiceImp pcService) {
+		super();
+		this.productRepository = productRepository;
+		this.ps = ps;
+		this.pscService = pscService;
+		this.pcService = pcService;
+	}
+	
 	@BeforeEach
 	void setUp1() {
-		MockitoAnnotations.openMocks(this);
-
+		product0 = new Product();
 		Productcategory pCategory = new Productcategory();
 		Productsubcategory pSubCategory = new Productsubcategory();
 		pSubCategory.setProductcategory(pCategory);
-		product0 = new Product();
+		
 		product0.setProductsubcategory(pSubCategory);
+		
+		pcService.saveProductcategory(pCategory);
+		pscService.saveProductsubcategory(pSubCategory);
+		product0.setProductid(1);
 		product0.setProductnumber("1");
 		product0.setSellstartdate(Timestamp.valueOf("2022-03-12 10:30:04"));
 		product0.setSellenddate(Timestamp.valueOf("2022-03-13 10:30:04")); //
 		product0.setWeight(BigDecimal.valueOf(12));
 		product0.setSize(BigDecimal.valueOf(2));
 	}
+
 	
+
 	@BeforeEach
 	void setUp2() {
-		MockitoAnnotations.openMocks(this);
-
+		product2 = new Product();
 		Productcategory pCategory = new Productcategory();
 		Productsubcategory pSubCategory = new Productsubcategory();
 		pSubCategory.setProductcategory(pCategory);
-		product2 = new Product();
+		
 		product2.setProductsubcategory(pSubCategory);
+		
+		pcService.saveProductcategory(pCategory);
+		pscService.saveProductsubcategory(pSubCategory);
+		product2.setProductid(1);
 		product2.setProductnumber("1");
 		product2.setSellstartdate(Timestamp.valueOf("2022-03-15 10:30:04"));
 		product2.setSellenddate(Timestamp.valueOf("2022-03-13 10:30:04")); //
@@ -76,23 +98,24 @@ class ProductTest {
 	
 	@BeforeEach
 	void setUp3() {
-		MockitoAnnotations.openMocks(this);
-
 		product4 = new Product();
 		product4.setProductid(1);
 	}
 	
 	@BeforeEach
 	void setUp4() {
-		MockitoAnnotations.openMocks(this);
-		
 		product0op = Optional.of(product0);
 		
+		product1 = new Product();
 		Productcategory pCategory = new Productcategory();
 		Productsubcategory pSubCategory = new Productsubcategory();
 		pSubCategory.setProductcategory(pCategory);
-		product1 = new Product();
+		
 		product1.setProductsubcategory(pSubCategory);
+		
+		pcService.saveProductcategory(pCategory);
+		pscService.saveProductsubcategory(pSubCategory);
+		product1.setProductid(1);
 		product1.setProductnumber("1");
 		product1.setSellstartdate(Timestamp.valueOf("2022-03-12 10:30:04"));
 		product1.setSellenddate(Timestamp.valueOf("2022-03-13 10:30:04")); //
@@ -102,15 +125,18 @@ class ProductTest {
 	
 	@BeforeEach
 	void setUp5() {
-		MockitoAnnotations.openMocks(this);
-		
 		product0op = Optional.of(product0);
 		
+		product3 = new Product();
 		Productcategory pCategory = new Productcategory();
 		Productsubcategory pSubCategory = new Productsubcategory();
 		pSubCategory.setProductcategory(pCategory);
-		product3 = new Product();
+		
 		product3.setProductsubcategory(pSubCategory);
+		
+		pcService.saveProductcategory(pCategory);
+		pscService.saveProductsubcategory(pSubCategory);
+		product3.setProductid(1);
 		product3.setProductnumber("1");
 		product3.setSellstartdate(Timestamp.valueOf("2022-03-14 10:30:04"));
 		product3.setSellenddate(Timestamp.valueOf("2022-03-13 10:30:04")); //
@@ -122,14 +148,12 @@ class ProductTest {
 	
 	@Test
 	void testThatSaveAnProduct() {
-		when(productRepository.save(product0)).thenReturn(product0);
 		assertNotNull(ps.saveProduct(product0));
 	}
 
 
 	@Test
 	void testConstraints() {
-		when(productRepository.save(product0)).thenReturn(product0);
 		Product testLoc = ps.saveProduct(product0);
 		assertNotNull(testLoc.getProductsubcategory());
 		assertNotNull(testLoc.getProductsubcategory().getProductcategory());
@@ -212,8 +236,7 @@ class ProductTest {
 
 	@Test
 	void testThatEditAnProduct() {
-		when(productRepository.findById(1)).thenReturn(product0op);
-		when(productRepository.save(product0)).thenReturn(product0);
+		ps.saveProduct(product0);
 		Product test = ps.editProduct(product1, 1);
 		assertEquals(test.getProductid(), product1.getProductid());
 		assertEquals(test.getProductsubcategory(), product1.getProductsubcategory());
@@ -228,8 +251,7 @@ class ProductTest {
 	
 	@Test
 	void testExceptionEdit() {
-		when(productRepository.findById(1)).thenReturn(product0op);
-		
+		ps.saveProduct(product0);
 		Assertions.assertThrows(IllegalArgumentException.class, () -> {
 			ps.editProduct(product3, 1);
 		});
@@ -264,7 +286,7 @@ class ProductTest {
 	
 	@Test
 	void testExceptionEditEmpty() {
-		when(productRepository.findById(1)).thenReturn(product0op);
+		ps.saveProduct(product0);
 		
 		Assertions.assertThrows(NullPointerException.class, () -> {
 			ps.editProduct(product4, 1);

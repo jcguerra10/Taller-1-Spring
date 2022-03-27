@@ -1,6 +1,5 @@
 package com.taller1.demo.services;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -42,10 +41,6 @@ public class LocationServiceImp implements LocationService {
 	@Transactional
 	@Override
 	public Location editLocation(Location loc, Integer locId) {
-		
-		Iterable<Location> list = locationRepository.findAll();
-	
-		
 		Optional<Location> op = locationRepository.findById(locId);
 		Location opLoc = op.get();
 		if (loc == null )
